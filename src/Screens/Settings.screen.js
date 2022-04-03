@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { listCategories } from "../Redux/actions/category.actions";
 import Loader from "../Components/Loader.js";
 import Message from "../Components/Message.js";
-import { DIFFICULTY_OPTIONS, TYPE_OPTIONS } from "../Constants/settings.constants";
+import {
+    DIFFICULTY_OPTIONS,
+    TYPE_OPTIONS,
+    CATEGORY,
+    DIFFICULTY,
+    TYPE,
+} from "../Constants/settings.constants";
 
 const SettingsScreen = () => {
     const dispatch = useDispatch();
@@ -21,7 +27,6 @@ const SettingsScreen = () => {
         e.preventDefault();
     };
 
-    
     return (
         <>
             {loading ? (
@@ -31,9 +36,12 @@ const SettingsScreen = () => {
             ) : (
                 <Form onSubmit={handleSubmit}>
                     <Form.Group>
-                        <SelectField options={categories} label="Category" />
-                        <SelectField options={DIFFICULTY_OPTIONS} label="Difficulty" />
-                        <SelectField options={TYPE_OPTIONS} label="Type" />
+                        <SelectField options={categories} label={CATEGORY} />
+                        <SelectField
+                            options={DIFFICULTY_OPTIONS}
+                            label={DIFFICULTY}
+                        />
+                        <SelectField options={TYPE_OPTIONS} label={TYPE} />
 
                         <FloatingLabel
                             label="Amount of questions:"

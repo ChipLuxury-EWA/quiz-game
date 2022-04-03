@@ -8,7 +8,7 @@ import { settingsReducer } from "./reducers/settings.reducer.js";
 const reducer = combineReducers({
     questionsList: questionsListReducer,
     categoriesList: categoriesListReducer,
-    settingsList : settingsReducer
+    settingsList: settingsReducer,
 });
 
 const initialState = {};

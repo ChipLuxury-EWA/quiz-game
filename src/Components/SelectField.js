@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, FloatingLabel } from "react-bootstrap";
+import { CATEGORY, DIFFICULTY, TYPE } from "../Constants/settings.constants";
+import {
+    changeCategory,
+    changeDifficulty,
+    changeType,
+} from "../Redux/actions/settings.actions";
+
+// import { setSetting } from "../Services/settings.service";
 
 const SelectField = (props) => {
     const { label, options } = props;
-    const [value, setValue] = useState();
+
+    const dispatch = useDispatch();
+
     const dynamicOptionsList = options.map((option) => {
         return (
             <option key={option.id} value={option.id}>
@@ -13,7 +23,21 @@ const SelectField = (props) => {
     });
 
     const handleChange = (e) => {
-        setValue(e.target.value);
+        // TODO: Move this to services:
+        // dispatch(setSetting(label, e.target.value));
+        switch (label) {
+            case CATEGORY:
+                dispatch(changeCategory(e.target.value));
+                break;
+            case DIFFICULTY:
+                dispatch(changeDifficulty(e.target.value));
+                break;
+            case TYPE:
+                dispatch(changeType(e.target.value));
+                break;
+            default:
+                break;
+        }
     };
 
     return (

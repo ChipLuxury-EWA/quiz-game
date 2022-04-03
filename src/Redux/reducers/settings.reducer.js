@@ -4,25 +4,56 @@ import {
     CHANGE_TYPE,
     CHANGE_AMOUNT,
     CHANGE_SCORE,
+    CHANGE_PLAYER_NAME,
+    CHANGE_CATEGORY_FAILED,
+    CHANGE_DIFFICULTY_FAILED,
+    CHANGE_TYPE_FAILED,
+    CHANGE_AMOUNT_FAILED,
+    CHANGE_SCORE_FAILED,
+    CHANGE_PLAYER_NAME_FAILED,
 } from "../constants/settings.constants.js";
+//TODO: move score and player name too separate reducer
+const initialState = {
+    category: "",
+    difficulty: "",
+    type: "",
+    amount: 10,
+    score: 0,
+    playerName: "",
+};
 
-export const settingsReducer = (state = { settings: {} }, action) => {
+export const settingsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_REQUEST:
-            return {
-                loading: true,
-                settings: {
-                    category: "",
-                    difficulty: "",
-                    type: "",
-                    amount: 10,
-                    score: 0,
-                },
-            };
-        case UPDATE_SUCCESS:
-            return { loading: false, settings: action.payload };
-        case UPDATE_FAILED:
-            return { loading: false, error: action.payload };
+        case CHANGE_CATEGORY:
+            return { ...state, category: action.payload };
+        case CHANGE_CATEGORY_FAILED:
+            return { error: action.payload };
+
+        case CHANGE_DIFFICULTY:
+            return { ...state, difficulty: action.payload };
+        case CHANGE_DIFFICULTY_FAILED:
+            return { error: action.payload };
+
+        case CHANGE_TYPE:
+            return { ...state, type: action.payload };
+        case CHANGE_TYPE_FAILED:
+            return { error: action.payload };
+
+        case CHANGE_AMOUNT:
+            return { ...state, amount: action.payload };
+        case CHANGE_AMOUNT_FAILED:
+            return { error: action.payload };
+
+        case CHANGE_SCORE:
+            return { ...state, score: action.payload };
+        case CHANGE_SCORE_FAILED:
+            return { error: action.payload };
+
+        case CHANGE_PLAYER_NAME:
+            return { ...state, playerName: action.payload };
+        case CHANGE_PLAYER_NAME_FAILED:
+            return { error: action.payload };
+
         default:
             return state;
     }
