@@ -1,10 +1,16 @@
 import { useDispatch } from "react-redux";
 import { Form, FloatingLabel } from "react-bootstrap";
-import { CATEGORY, DIFFICULTY, TYPE } from "../Constants/settings.constants";
+import {
+    AMOUNT,
+    CATEGORY,
+    DIFFICULTY,
+    TYPE,
+} from "../Constants/settings.constants";
 import {
     changeCategory,
     changeDifficulty,
     changeType,
+    changeAmount,
 } from "../Redux/actions/settings.actions";
 
 // import { setSetting } from "../Services/settings.service";
@@ -35,6 +41,9 @@ const SelectField = (props) => {
             case TYPE:
                 dispatch(changeType(e.target.value));
                 break;
+            case AMOUNT:
+                dispatch(changeAmount(e.target.value));
+                break;
             default:
                 break;
         }
@@ -42,10 +51,11 @@ const SelectField = (props) => {
 
     return (
         <FloatingLabel label={label}>
-            <Form.Select className="m-3" onChange={handleChange}>
-                <option>Choose one</option>
+            <Form.Select className="" onChange={handleChange}>
+                <option value={""}>Choose one</option>
                 {dynamicOptionsList}
             </Form.Select>
+            <br/>
         </FloatingLabel>
     );
 };

@@ -4,19 +4,13 @@ import {
     QUESTION_LIST_FAILED,
 } from "../constants/question.constants.js";
 
-import {
-    fetchQuestions,
-} from "../../Services/question.service";
-
-export const listQuestions = () => async (dispatch) => {
+export const listQuestions = (questions) => async (dispatch) => {
     try {
         dispatch({ type: QUESTION_LIST_REQUEST });
-
-        const questions = await fetchQuestions();
-
+        
         dispatch({
             type: QUESTION_LIST_SUCCESS,
-            payload: questions,
+            payload: await questions,
         });
     } catch (error) {
         dispatch({

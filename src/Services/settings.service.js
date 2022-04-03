@@ -2,9 +2,9 @@ import {
     changeCategory,
     changeDifficulty,
     changeType,
-    changeAmount,
-    changeScore,
-    changePlayerName,
+    // changeAmount,
+    // changeScore,
+    // changePlayerName,
 } from "../Redux/actions/settings.actions";
 
 import { CATEGORY, DIFFICULTY, TYPE } from "../Constants/settings.constants";

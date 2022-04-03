@@ -1,13 +1,12 @@
 import axios from "axios";
 
-const fetchQuestions = async () => {
-    // TODO: change here the db to open tdb
-    const foo =
-        "https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple";
-    const { data } = await axios.get(foo);
-    return data;
+const fetchQuestions = async (amount, category, difficulty, type) => {
+    const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`;
+    const { data } = await axios.get(url);
+    console.log(data.results)
+    return data.results;
 };
 
-export {
-    fetchQuestions,
-};
+
+
+export { fetchQuestions };
