@@ -21,10 +21,10 @@ const Header = () => {
                     <Navbar.Toggle id="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <LinkContainer to="/cart">
+                            <LinkContainer to="/settings">
                                 <Nav.Link>
                                     <i className="fas fa-shopping-cart"></i>{" "}
-                                    LINK 1
+                                    Settings
                                 </Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/login">
