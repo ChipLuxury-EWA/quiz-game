@@ -1,35 +1,27 @@
-import React, { useEffect } from "react";
-//Redux:
-import { useDispatch, useSelector } from "react-redux";
-import { listQuestions } from "../Redux/actions/question.actions";
+import { useState, useEffect } from "react";
 //Components:
 import Loader from "../Components/Loader.js";
 import Message from "../Components/Message.js";
+import Question from "../Components/Question";
 
-import {
-    Container,
-    Row,
-    Col,
-    ProgressBar,
-    Alert,
-    Card,
-    Button,
-    ButtonGroup,
-} from "react-bootstrap";
+import { Container, Row, ProgressBar } from "react-bootstrap";
 import useTrivia from "../hooks/useTrivia";
 
-
 const QuestionsScreen = () => {
-    const dispatch = useDispatch();
-
-    const questionsList = useSelector((state) => state.questionsList);
-    const { loading, error, questions } = questionsList;
-    
-    //My 'useEffect' hook to fetch question according to redux settings state
+    // My hook to fetch question according to 'settings' to redux-state
+    // this hook also return questions list because I have some problems render from redux
     // also this is my first hook!!!
-    
-    useTrivia()
-    console.log(questions)
+    const { loading, error, questions } = useTrivia();
+    // console.log(loading, questions);
+
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [question, setQuestion] = useState({});
+    useEffect(() => {
+        if (questions) {
+            setQuestion(questions[questionIndex]);
+        }
+    }, [questions, questionIndex]);
+
     return (
         <>
             {loading ? (
@@ -38,37 +30,12 @@ const QuestionsScreen = () => {
                 <Message />
             ) : (
                 <Container>
-                    <Row>
-                        <Alert className="alert alert-dismissible alert-primary">
-                            <h4 className="alert-heading">Question #1</h4>
-                            <p>
-                                <strong>
-                                    The theme for the popular science fiction
-                                    series &quot;Doctor Who&quot; was composed
-                                    by who?
-                                </strong>
-                            </p>
-                        </Alert>
-                    </Row>
-
-                    <Row>
-                        <ButtonGroup className="btn-group-vertical">
-                            <Button className="btn btn-primary">
-                                answer 1
-                            </Button>
-                            <Button className="btn btn-primary">
-                                answer 2
-                            </Button>
-                            <Button className="btn btn-primary">
-                                answer 3
-                            </Button>
-                            <Button className="btn btn-primary">
-                                answer 4
-                            </Button>
-                        </ButtonGroup>
-                    </Row>
-                    <br />
-
+                    <Question
+                        index={questionIndex}
+                        question={question}
+                        wrongAnswers={question.incorrect_answers}
+                        trueAnswer={question.correct_answer}
+                    />
                     <Row>
                         <ProgressBar
                             now="60"

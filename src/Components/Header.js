@@ -30,7 +30,7 @@ const Header = () => {
                             <LinkContainer to="/questions">
                                 <Nav.Link>
                                     <i className="fas fa-user"></i> {" "}
-                                    LINK 2
+                                    Quick Start!
                                 </Nav.Link>
                             </LinkContainer>
                         </Nav>
