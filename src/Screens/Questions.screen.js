@@ -12,7 +12,7 @@ const QuestionsScreen = () => {
     // this hook also return questions list because I have some problems render from redux
     // also this is my first hook!!!
     const { loading, error, questions } = useTrivia();
-    // console.log(loading, questions);
+    // console.log(loading, questions); //nice example to see what is rendering
 
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
@@ -27,7 +27,7 @@ const QuestionsScreen = () => {
             {loading ? (
                 <Loader />
             ) : error ? (
-                <Message />
+                <Message message={error} variant={"danger"}/>
             ) : (
                 <Container>
                     <Question
@@ -35,12 +35,15 @@ const QuestionsScreen = () => {
                         question={question}
                         wrongAnswers={question.incorrect_answers}
                         trueAnswer={question.correct_answer}
+                        // TODO: add question Index to redux (setQuestion -> dispatch)
+                        questionIndex={questionIndex}
+                        setQuestionIndex={setQuestionIndex}
                     />
                     <Row>
                         <ProgressBar
-                            now="60"
-                            label="6/10"
-                            className="progress-bar progress-bar-striped progress-bar-animated"
+                            now={((questionIndex + 1)/questions.length) * 100}
+                            label={`${questionIndex + 1}/${questions.length}`}
+                            className="progress-bar progress-bar-striped bg-danger progress-bar-animated"
                         />
                     </Row>
                 </Container>

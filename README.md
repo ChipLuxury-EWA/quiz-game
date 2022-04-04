@@ -1,5 +1,9 @@
 Quiz game (home task for monday-u)
 
+* If you ask for 100 easy true/false question in music you can see Alert message
+
+
+
 Work flow from this tutorial:
 1. https://www.youtube.com/watch?v=6LROvk5d8H8
 

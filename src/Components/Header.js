@@ -2,10 +2,17 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
+//TODO maybe make quick start refresh the page?
+
 const Header = () => {
     return (
         <header>
-            <Navbar bg="primary" expand="lg" className="navbar-light bg-light">
+            <Navbar
+                collapseOnSelect
+                bg="primary"
+                expand="lg"
+                className="navbar-light bg-light"
+            >
                 <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand>
@@ -29,8 +36,7 @@ const Header = () => {
                             </LinkContainer>
                             <LinkContainer to="/questions">
                                 <Nav.Link>
-                                    <i className="fas fa-user"></i> {" "}
-                                    Quick Start!
+                                    <i className="fas fa-user"></i> Quick Start!
                                 </Nav.Link>
                             </LinkContainer>
                         </Nav>
