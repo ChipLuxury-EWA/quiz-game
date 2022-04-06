@@ -9,6 +9,9 @@ import FinalScreen from "./Screens/Final.screen";
 import QuestionsScreen from "./Screens/Questions.screen";
 import SettingsScreen from "./Screens/Settings.screen";
 
+import Timer from "./hooks/useTimer";
+import GameBar from "./Components/GameBar";
+
 function App() {
     return (
         <Router>
@@ -20,6 +23,7 @@ function App() {
                         <Route path="questions" element={<QuestionsScreen />} />
                         <Route path="score" element={<FinalScreen />} />
                         <Route path="settings" element={<SettingsScreen />} />
+                        <Route path="test" element={<GameBar questionIndex={3} totalQuestions={6} />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Container>

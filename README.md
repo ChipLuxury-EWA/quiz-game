@@ -1,4 +1,6 @@
 Quiz game (home task for monday-u)
+You can play it live on netlify: https://quiz-game-tom-portugez.netlify.app/
+
 
 * If you ask for 100 easy true/false question in music you can see Alert message
 

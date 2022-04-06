@@ -10,7 +10,7 @@ const Header = () => {
             <Navbar
                 collapseOnSelect
                 bg="primary"
-                expand="lg"
+                expand="sm"
                 className="navbar-light bg-light"
             >
                 <Container>

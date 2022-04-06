@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Loader from "../Components/Loader.js";
 import Message from "../Components/Message.js";
 import Question from "../Components/Question";
+import GameBar from "../Components/GameBar.js";
+import useTimer from "../hooks/useTimer.js";
 
 import { Container, Row, ProgressBar } from "react-bootstrap";
 import useTrivia from "../hooks/useTrivia";
@@ -13,6 +15,9 @@ const QuestionsScreen = () => {
     // also this is my first hook!!!
     const { loading, error, questions } = useTrivia();
     // console.log(loading, questions); //nice example to see what is rendering
+
+    const { isActive, seconds, done, toggle } = useTimer(10);
+    console.log(seconds, isActive, done);
 
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
@@ -40,11 +45,7 @@ const QuestionsScreen = () => {
                         setQuestionIndex={setQuestionIndex}
                     />
                     <Row>
-                        <ProgressBar
-                            now={((questionIndex + 1)/questions.length) * 100}
-                            label={`${questionIndex + 1}/${questions.length}`}
-                            className="progress-bar progress-bar-striped bg-danger progress-bar-animated"
-                        />
+                        <GameBar questionIndex={questionIndex} totalQuestions={questions.length} />
                     </Row>
                 </Container>
             )}

@@ -39,7 +39,7 @@ const useTrivia = () => {
         };
         //sending questions to redux:
         //tried to render in questions screen but I having async problems...
-        //going to return from hook.
+        //going to return questions from hook.
         const ans = fetchQuestions();
         dispatch(listQuestions(ans));
         // eslint-disable-next-line
