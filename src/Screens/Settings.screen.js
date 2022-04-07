@@ -11,13 +11,13 @@ import {
     DIFFICULTY_OPTIONS,
     TYPE_OPTIONS,
     AMOUNT_OPTIONS,
+    TIMER_OPTIONS,
     CATEGORY,
     DIFFICULTY,
     TYPE,
     AMOUNT,
+    TIMER,
 } from "../Constants/settings.constants";
-
-
 
 const SettingsScreen = () => {
     const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const SettingsScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/questions')
+        navigate("/questions");
     };
 
     return (
@@ -68,6 +68,12 @@ const SettingsScreen = () => {
                                 <SelectField
                                     options={AMOUNT_OPTIONS}
                                     label={AMOUNT}
+                                />
+                            </Row>
+                            <Row>
+                                <SelectField
+                                    options={TIMER_OPTIONS}
+                                    label={TIMER}
                                 />
                             </Row>
                             <Row>

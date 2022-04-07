@@ -5,12 +5,14 @@ import {
     CATEGORY,
     DIFFICULTY,
     TYPE,
+    TIMER,
 } from "../Constants/settings.constants";
 import {
     changeCategory,
     changeDifficulty,
     changeType,
     changeAmount,
+    changeTimer,
 } from "../Redux/actions/settings.actions";
 
 // import { setSetting } from "../Services/settings.service";
@@ -44,6 +46,9 @@ const SelectField = (props) => {
             case AMOUNT:
                 dispatch(changeAmount(e.target.value));
                 break;
+            case TIMER:
+                dispatch(changeTimer(e.target.value));
+                break;
             default:
                 break;
         }
@@ -55,7 +60,7 @@ const SelectField = (props) => {
                 <option value={""}>Choose one</option>
                 {dynamicOptionsList}
             </Form.Select>
-            <br/>
+            <br />
         </FloatingLabel>
     );
 };

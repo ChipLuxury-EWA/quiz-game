@@ -4,13 +4,13 @@ import {
     CHANGE_TYPE,
     CHANGE_AMOUNT,
     CHANGE_SCORE,
-    CHANGE_PLAYER_NAME,
+    CHANGE_TIMER,
     CHANGE_CATEGORY_FAILED,
     CHANGE_DIFFICULTY_FAILED,
     CHANGE_TYPE_FAILED,
     CHANGE_AMOUNT_FAILED,
     CHANGE_SCORE_FAILED,
-    CHANGE_PLAYER_NAME_FAILED,
+    CHANGE_TIMER_FAILED,
 } from "../constants/settings.constants.js";
 
 export const changeCategory = (settings) => async (dispatch) => {
@@ -78,15 +78,15 @@ export const changeScore = (settings) => async (dispatch) => {
         });
     }
 };
-export const changePlayerName = (settings) => async (dispatch) => {
+export const changeTimer = (settings) => async (dispatch) => {
     try {
         dispatch({
-            type: CHANGE_PLAYER_NAME,
+            type: CHANGE_TIMER,
             payload: settings,
         });
     } catch (error) {
         dispatch({
-            type: CHANGE_PLAYER_NAME_FAILED,
+            type: CHANGE_TIMER_FAILED,
             payload: "Failed to change player name"
         });
     }

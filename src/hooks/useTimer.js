@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-const useTimer = (countTime = 10) => {
+const useTimer = () => {
+    const settingsList = useSelector((state) => state.settingsList);
+    const { countTime } = settingsList;
+
     const [seconds, setSeconds] = useState(countTime);
     const [isActive, setIsActive] = useState(true);
 

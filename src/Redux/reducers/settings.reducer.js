@@ -4,13 +4,13 @@ import {
     CHANGE_TYPE,
     CHANGE_AMOUNT,
     CHANGE_SCORE,
-    CHANGE_PLAYER_NAME,
+    CHANGE_TIMER,
     CHANGE_CATEGORY_FAILED,
     CHANGE_DIFFICULTY_FAILED,
     CHANGE_TYPE_FAILED,
     CHANGE_AMOUNT_FAILED,
     CHANGE_SCORE_FAILED,
-    CHANGE_PLAYER_NAME_FAILED,
+    CHANGE_TIMER_FAILED,
 } from "../constants/settings.constants.js";
 //TODO: move score and player name too separate reducer
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
     type: "",
     amount: 10,
     score: 0,
-    playerName: "",
+    countTime: 15,
 };
 
 export const settingsReducer = (state = initialState, action) => {
@@ -49,9 +49,9 @@ export const settingsReducer = (state = initialState, action) => {
         case CHANGE_SCORE_FAILED:
             return { error: action.payload };
 
-        case CHANGE_PLAYER_NAME:
-            return { ...state, playerName: action.payload };
-        case CHANGE_PLAYER_NAME_FAILED:
+        case CHANGE_TIMER:
+            return { ...state, countTime: action.payload };
+        case CHANGE_TIMER_FAILED:
             return { error: action.payload };
 
         default:
