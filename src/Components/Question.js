@@ -13,7 +13,7 @@ const Question = ({
     questionIndex,
     setQuestionIndex,
     resetTimer,
-    toggle
+    toggle,
 }) => {
     const [answers, setAnswers] = useState([]);
     useEffect(() => {
@@ -37,7 +37,7 @@ const Question = ({
         if (answers.length > 2) {
             for (let i = 0; i < answers.length; i++) {
                 if (answers[i] !== trueAnswer) {
-                    answers.splice(i,1)
+                    answers.splice(i, 1);
                 }
             }
         }
@@ -60,8 +60,13 @@ const Question = ({
             </Row>
             <br />
             <Row>
-                <Helpers delete2={delete2} toggle={toggle} trueAnswer={trueAnswer} />
+                <Helpers
+                    delete2={delete2}
+                    toggle={toggle}
+                    trueAnswer={trueAnswer}
+                />
             </Row>
+            <br/>
         </Container>
     );
 };

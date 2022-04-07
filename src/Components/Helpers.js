@@ -19,7 +19,7 @@ const Helpers = ({ delete2, toggle, trueAnswer }) => {
     };
 
     const getAns = () => {
-        setGetAnsValue(trueAnswer)
+        setGetAnsValue(trueAnswer);
         setClassGetAns("btn-sm disabled");
     };
 
@@ -42,7 +42,6 @@ const Helpers = ({ delete2, toggle, trueAnswer }) => {
                     </Button>
                 </Col>
             </Row>
-            <br />
         </Container>
     );
 };
