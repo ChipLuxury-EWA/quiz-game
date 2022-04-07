@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { decode } from "html-entities";
 
-import { CHANGE_SCORE } from "../Redux/constants/settings.constants";
 import { changeScore } from "../Redux/actions/settings.actions";
 
-const Answer = ({ value, id, questionIndex, setQuestionIndex }) => {
+const Answer = ({ value, id, questionIndex, setQuestionIndex , resetTimer}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { questions } = useSelector((state) => state.questionsList);
@@ -16,8 +15,8 @@ const Answer = ({ value, id, questionIndex, setQuestionIndex }) => {
         if (value === questions[questionIndex].correct_answer) {
             dispatch(changeScore(score + 1));
         }
-
         if (questionIndex + 1 < questions.length) {
+            resetTimer()
             setQuestionIndex(questionIndex + 1);
         } else {
             navigate("/score");

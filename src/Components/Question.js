@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Row, Alert, ButtonGroup, Button } from "react-bootstrap";
+
 import { insertCorrectAnswer } from "../Services/question.service";
 import { decode } from "html-entities";
 import Answer from "./Answer";
@@ -11,6 +12,7 @@ const Question = ({
     trueAnswer,
     questionIndex,
     setQuestionIndex,
+    resetTimer
 }) => {
     const [answers, setAnswers] = useState([]);
 
@@ -26,6 +28,7 @@ const Question = ({
                 id={id}
                 questionIndex={questionIndex}
                 setQuestionIndex={setQuestionIndex}
+                resetTimer={resetTimer}
             />
         );
     });

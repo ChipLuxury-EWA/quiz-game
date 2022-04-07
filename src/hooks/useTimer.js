@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useTimer = ({ countTime }) => {
+const useTimer = (countTime = 10) => {
     const [seconds, setSeconds] = useState(countTime);
-    const [isActive, setIsActive] = useState(false);
-    const [done, setDone] = useState(false);
+    const [isActive, setIsActive] = useState(true);
 
     const toggle = () => {
         setIsActive(!isActive);
@@ -11,16 +10,19 @@ const useTimer = ({ countTime }) => {
 
     const resetTimer = () => {
         setSeconds(countTime);
-        setIsActive(false);
+        setIsActive(true); //to loop timer this set does setState does nothing actually
+    };
+
+    const stopTimer = () => {
+        setSeconds(countTime);
+        setIsActive(false); //to stop timer at each count
     };
 
     useEffect(() => {
         let interval = null;
         if (isActive && seconds === 0) {
-            setDone(true);
             resetTimer();
         } else if (isActive) {
-            setDone(false);
             interval = setInterval(() => {
                 setSeconds((seconds) => seconds - 1);
             }, 1000);
@@ -29,12 +31,7 @@ const useTimer = ({ countTime }) => {
         }
         return () => clearInterval(interval);
     }, [isActive, seconds, countTime]);
-
-    return { isActive, seconds, done, toggle };
-};
-
-useTimer.defaultProps = {
-    countTime: 5,
+    return { isActive, seconds, countTime ,resetTimer};
 };
 
 export default useTimer;

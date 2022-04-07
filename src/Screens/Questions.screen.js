@@ -6,25 +6,20 @@ import Question from "../Components/Question";
 import GameBar from "../Components/GameBar.js";
 import useTimer from "../hooks/useTimer.js";
 
-import { Container, Row, ProgressBar } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import useTrivia from "../hooks/useTrivia";
+import TimerBar from "../Components/TimerBar.js";
 
 const QuestionsScreen = () => {
-    // My hook to fetch question according to 'settings' to redux-state
-    // this hook also return questions list because I have some problems render from redux
-    // also this is my first hook!!!
-    const { loading, error, questions } = useTrivia();
-    // console.log(loading, questions); //nice example to see what is rendering
-
-    const { isActive, seconds, done, toggle } = useTimer(10);
-    console.log(seconds, isActive, done);
-
+    const {seconds, done, countTime, resetTimer } = useTimer(10)
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
+    const { loading, error, questions } = useTrivia();
     useEffect(() => {
         if (questions) {
             setQuestion(questions[questionIndex]);
         }
+
     }, [questions, questionIndex]);
 
     return (
@@ -32,7 +27,7 @@ const QuestionsScreen = () => {
             {loading ? (
                 <Loader />
             ) : error ? (
-                <Message message={error} variant={"danger"}/>
+                <Message message={error} variant={"danger"} />
             ) : (
                 <Container>
                     <Question
@@ -43,10 +38,16 @@ const QuestionsScreen = () => {
                         // TODO: add question Index to redux (setQuestion -> dispatch)
                         questionIndex={questionIndex}
                         setQuestionIndex={setQuestionIndex}
+                        resetTimer={resetTimer}
                     />
-                    <Row>
-                        <GameBar questionIndex={questionIndex} totalQuestions={questions.length} />
-                    </Row>
+                    <TimerBar
+                        // TODO: add question Index to redux (setQuestion -> dispatch)
+                        questionIndex={questionIndex}
+                        setQuestionIndex={setQuestionIndex}
+                        seconds={seconds}
+                        done={done}
+                        countTime={countTime}
+                    />
                 </Container>
             )}
         </>
