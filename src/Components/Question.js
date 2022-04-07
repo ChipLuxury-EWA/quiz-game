@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
 import { Row, Alert, ButtonGroup, Container } from "react-bootstrap";
+import { decode } from "html-entities";
 
 import { insertCorrectAnswer } from "../Services/question.service";
-import { decode } from "html-entities";
+import Helpers from "./Helpers";
 import Answer from "./Answer";
 
 const Question = ({
     question,
-    index,
     wrongAnswers,
     trueAnswer,
     questionIndex,
     setQuestionIndex,
     resetTimer,
+    toggle
 }) => {
     const [answers, setAnswers] = useState([]);
-
     useEffect(() => {
         setAnswers(insertCorrectAnswer(wrongAnswers, trueAnswer));
     }, [question, wrongAnswers, trueAnswer]);
@@ -32,6 +32,17 @@ const Question = ({
             />
         );
     });
+
+    const delete2 = () => {
+        if (answers.length > 2) {
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i] !== trueAnswer) {
+                    answers.splice(i,1)
+                }
+            }
+        }
+    };
+
     return (
         <Container>
             <Row>
@@ -48,6 +59,9 @@ const Question = ({
                 </ButtonGroup>
             </Row>
             <br />
+            <Row>
+                <Helpers delete2={delete2} toggle={toggle} trueAnswer={trueAnswer} />
+            </Row>
         </Container>
     );
 };

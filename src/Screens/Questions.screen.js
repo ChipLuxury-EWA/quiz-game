@@ -11,7 +11,7 @@ import useTrivia from "../hooks/useTrivia";
 import TimerBar from "../Components/TimerBar.js";
 
 const QuestionsScreen = () => {
-    const { seconds, done, countTime, resetTimer } = useTimer(15);
+    const { seconds, done, countTime, resetTimer, toggle } = useTimer(15);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
     const { loading, error, questions } = useTrivia();
@@ -37,12 +37,14 @@ const QuestionsScreen = () => {
                         <Question
                             index={questionIndex}
                             question={question}
+                            questions={questions}
                             wrongAnswers={question.incorrect_answers}
                             trueAnswer={question.correct_answer}
                             // TODO: add question Index to redux (setQuestion -> dispatch)
                             questionIndex={questionIndex}
                             setQuestionIndex={setQuestionIndex}
                             resetTimer={resetTimer}
+                            toggle={toggle}
                         />
                         <TimerBar
                             // TODO: add question Index to redux (setQuestion -> dispatch)
