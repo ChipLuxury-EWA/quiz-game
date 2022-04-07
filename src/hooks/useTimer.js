@@ -4,6 +4,7 @@ const useTimer = (countTime = 10) => {
     const [seconds, setSeconds] = useState(countTime);
     const [isActive, setIsActive] = useState(true);
 
+    // TODO: add a 'pause time' feature to the game
     const toggle = () => {
         setIsActive(!isActive);
     };
@@ -13,15 +14,16 @@ const useTimer = (countTime = 10) => {
         setIsActive(true); //to loop timer this set does setState does nothing actually
     };
 
+    // eslint-disable-next-line
     const stopTimer = () => {
         setSeconds(countTime);
-        setIsActive(false); //to stop timer at each count
+        setIsActive(false); //to stop timer at each counting round
     };
 
     useEffect(() => {
         let interval = null;
         if (isActive && seconds === 0) {
-            resetTimer();
+            resetTimer(); //reset for looping stopTimer for not looping...
         } else if (isActive) {
             interval = setInterval(() => {
                 setSeconds((seconds) => seconds - 1);
@@ -30,8 +32,9 @@ const useTimer = (countTime = 10) => {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
+        // eslint-disable-next-line
     }, [isActive, seconds, countTime]);
-    return { isActive, seconds, countTime ,resetTimer};
+    return { isActive, seconds, countTime, resetTimer, toggle };
 };
 
 export default useTimer;

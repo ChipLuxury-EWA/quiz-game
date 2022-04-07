@@ -7,12 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const Header = () => {
     return (
         <header>
-            <Navbar
-                collapseOnSelect
-                bg="primary"
-                expand="xxs"
-                className="navbar-light bg-light"
-            >
+            <Navbar className="navbar-light bg-light">
                 <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand>
@@ -25,22 +20,19 @@ const Header = () => {
                             Quiz Game
                         </Navbar.Brand>
                     </LinkContainer>
-                    <Navbar.Toggle id="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <LinkContainer to="/settings">
-                                <Nav.Link>
-                                    <i className="fas fa-shopping-cart"></i>{" "}
-                                    Settings
-                                </Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to="/questions">
-                                <Nav.Link>
-                                    <i className="fas fa-user"></i> Quick Start!
-                                </Nav.Link>
-                            </LinkContainer>
-                        </Nav>
-                    </Navbar.Collapse>
+                    <Nav className="me-auto">
+                        <LinkContainer to="/settings">
+                            <Nav.Link>
+                                <i className="fas fa-shopping-cart"></i>{" "}
+                                Settings
+                            </Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/questions">
+                            <Nav.Link>
+                                <i className="fas fa-user"></i> Quick Start!
+                            </Nav.Link>
+                        </LinkContainer>
+                    </Nav>
                 </Container>
             </Navbar>
         </header>

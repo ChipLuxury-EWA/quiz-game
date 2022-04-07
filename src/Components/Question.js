@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Row, Alert, ButtonGroup, Button } from "react-bootstrap";
+import { Row, Alert, ButtonGroup, Container } from "react-bootstrap";
 
 import { insertCorrectAnswer } from "../Services/question.service";
 import { decode } from "html-entities";
@@ -12,7 +12,7 @@ const Question = ({
     trueAnswer,
     questionIndex,
     setQuestionIndex,
-    resetTimer
+    resetTimer,
 }) => {
     const [answers, setAnswers] = useState([]);
 
@@ -33,14 +33,13 @@ const Question = ({
         );
     });
     return (
-        <>
+        <Container>
             <Row>
                 <Alert className="alert alert-dismissible alert-primary">
-                    <h2 className="alert-heading">Question #{index + 1}</h2>
-                    <h6>Category: {question.category}</h6>
-                    <p>
+                    <h2 className="alert-heading">
                         <strong>{decode(question.question)}</strong>
-                    </p>
+                    </h2>
+                    <h6>Category: {question.category}</h6>
                 </Alert>
             </Row>
             <Row>
@@ -49,7 +48,7 @@ const Question = ({
                 </ButtonGroup>
             </Row>
             <br />
-        </>
+        </Container>
     );
 };
 

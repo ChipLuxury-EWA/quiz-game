@@ -11,7 +11,7 @@ import useTrivia from "../hooks/useTrivia";
 import TimerBar from "../Components/TimerBar.js";
 
 const QuestionsScreen = () => {
-    const {seconds, done, countTime, resetTimer } = useTimer(10)
+    const { seconds, done, countTime, resetTimer } = useTimer(15);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
     const { loading, error, questions } = useTrivia();
@@ -19,7 +19,6 @@ const QuestionsScreen = () => {
         if (questions) {
             setQuestion(questions[questionIndex]);
         }
-
     }, [questions, questionIndex]);
 
     return (
@@ -29,26 +28,32 @@ const QuestionsScreen = () => {
             ) : error ? (
                 <Message message={error} variant={"danger"} />
             ) : (
-                <Container>
-                    <Question
-                        index={questionIndex}
-                        question={question}
-                        wrongAnswers={question.incorrect_answers}
-                        trueAnswer={question.correct_answer}
-                        // TODO: add question Index to redux (setQuestion -> dispatch)
-                        questionIndex={questionIndex}
-                        setQuestionIndex={setQuestionIndex}
-                        resetTimer={resetTimer}
-                    />
-                    <TimerBar
-                        // TODO: add question Index to redux (setQuestion -> dispatch)
-                        questionIndex={questionIndex}
-                        setQuestionIndex={setQuestionIndex}
-                        seconds={seconds}
-                        done={done}
-                        countTime={countTime}
-                    />
-                </Container>
+                <>
+                    <Container>
+                        <GameBar
+                            questionIndex={questionIndex}
+                            totalQuestions={questions.length}
+                        />
+                        <Question
+                            index={questionIndex}
+                            question={question}
+                            wrongAnswers={question.incorrect_answers}
+                            trueAnswer={question.correct_answer}
+                            // TODO: add question Index to redux (setQuestion -> dispatch)
+                            questionIndex={questionIndex}
+                            setQuestionIndex={setQuestionIndex}
+                            resetTimer={resetTimer}
+                        />
+                        <TimerBar
+                            // TODO: add question Index to redux (setQuestion -> dispatch)
+                            questionIndex={questionIndex}
+                            setQuestionIndex={setQuestionIndex}
+                            seconds={seconds}
+                            done={done}
+                            countTime={countTime}
+                        />
+                    </Container>
+                </>
             )}
         </>
     );
