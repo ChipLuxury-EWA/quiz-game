@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, ButtonGroup, Col, Container, Row } from "react-bootstrap";
 
 const Helpers = ({ delete2, toggle, trueAnswer }) => {
     const [class50, setClass50] = useState("btn-sm");
@@ -24,25 +24,17 @@ const Helpers = ({ delete2, toggle, trueAnswer }) => {
     };
 
     return (
-        <Container>
-            <Row>
-                <Col>
-                    <Button className={class50} onClick={handle50}>
-                        50/50
-                    </Button>
-                </Col>
-                <Col>
-                    <Button className={classPauseTime} onClick={pauseTime}>
-                        Pause time
-                    </Button>
-                </Col>
-                <Col>
-                    <Button className={classGetAns} onClick={getAns}>
-                        {getAnsValue}
-                    </Button>
-                </Col>
-            </Row>
-        </Container>
+        <ButtonGroup>
+            <Button className={class50} onClick={handle50}>
+                50/50
+            </Button>
+            <Button className={classPauseTime} onClick={pauseTime}>
+                Pause time
+            </Button>
+            <Button className={classGetAns} onClick={getAns}>
+                {getAnsValue}
+            </Button>
+        </ButtonGroup>
     );
 };
 
