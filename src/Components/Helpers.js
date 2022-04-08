@@ -29,7 +29,7 @@ const Helpers = ({ delete2, toggle, trueAnswer, isActive, score }) => {
     return (
         <>
             <Row>
-                <Col xs={11}>
+                <Col xs={10}>
                     <Row>
                         <ButtonGroup>
                             <Button className={class50} onClick={handle50}>
@@ -47,7 +47,7 @@ const Helpers = ({ delete2, toggle, trueAnswer, isActive, score }) => {
                         </ButtonGroup>
                     </Row>
                 </Col>
-                <Col xs={1}>
+                <Col xs={2}>
                     <span class="badge bg-success">score: {score}</span>
                 </Col>
             </Row>
