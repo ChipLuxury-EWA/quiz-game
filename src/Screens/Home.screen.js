@@ -21,6 +21,8 @@ const HomeScreen = () => {
                 <li>Only one answer is correct.</li>
                 <li>For correct answer you get a point.</li>
                 <li>You need at least 50% correct answers to pass!</li>
+                <li>You have 3 lifelines 50/50 pause-timer and get ans</li>
+                <li>If you pause the time and then take the 50/50 lifeline the timer will continue to count</li>
             </ul>
             <h5>INSTRUCTIONS:</h5>
             <h6>Quick start:</h6>

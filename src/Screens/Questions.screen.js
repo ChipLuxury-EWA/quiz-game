@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 //Components:
 import Loader from "../Components/Loader.js";
 import Message from "../Components/Message.js";
@@ -11,7 +12,8 @@ import useTrivia from "../hooks/useTrivia";
 import TimerBar from "../Components/TimerBar.js";
 
 const QuestionsScreen = () => {
-    const { seconds, done, countTime, resetTimer, toggle } = useTimer(15);
+    const { score } = useSelector((state) => state.settingsList);
+    const { seconds, isActive, countTime, resetTimer, toggle } = useTimer(15);
     const [questionIndex, setQuestionIndex] = useState(0);
     const [question, setQuestion] = useState({});
     const { loading, error, questions } = useTrivia();
@@ -45,13 +47,14 @@ const QuestionsScreen = () => {
                             setQuestionIndex={setQuestionIndex}
                             resetTimer={resetTimer}
                             toggle={toggle}
+                            isActive={isActive}
+                            score={score}
                         />
                         <TimerBar
                             // TODO: add question Index to redux (setQuestion -> dispatch)
                             questionIndex={questionIndex}
                             setQuestionIndex={setQuestionIndex}
                             seconds={seconds}
-                            done={done}
                             countTime={countTime}
                         />
                     </Container>

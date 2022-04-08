@@ -14,6 +14,8 @@ const Question = ({
     setQuestionIndex,
     resetTimer,
     toggle,
+    isActive,
+    score,
 }) => {
     const [answers, setAnswers] = useState([]);
     useEffect(() => {
@@ -62,11 +64,13 @@ const Question = ({
             <Row>
                 <Helpers
                     delete2={delete2}
+                    isActive={isActive}
                     toggle={toggle}
                     trueAnswer={trueAnswer}
+                    score={score}
                 />
             </Row>
-            <br/>
+            <br />
         </Container>
     );
 };
