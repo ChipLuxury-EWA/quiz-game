@@ -1,19 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { Button, ButtonGroup, Col, Row, Alert } from "react-bootstrap";
+import { Button, ButtonGroup, Col, Row } from "react-bootstrap";
 
 const Helpers = ({ delete2, toggle, trueAnswer, isActive, score }) => {
     const [class50, setClass50] = useState("btn-sm");
     const [classPauseTime, setClassPauseTime] = useState("btn-sm");
     const [classGetAns, setClassGetAns] = useState("btn-sm");
-    const [getAnsValue, setGetAnsValue] = useState("Get Ans");
+    const [getAnsValue, setGetAnsValue] = useState("Get-Ans");
 
     const handle50 = () => {
-        if (!isActive) {
-            toggle();
+        if (trueAnswer !== "False" && trueAnswer !== "True") {
+            if (!isActive) {
+                toggle();
+            }
+            delete2();
+            setClass50("btn-sm disabled");
         }
-        delete2();
-        setClass50("btn-sm disabled");
     };
 
     const pauseTime = () => {
@@ -39,7 +41,7 @@ const Helpers = ({ delete2, toggle, trueAnswer, isActive, score }) => {
                                 className={classPauseTime}
                                 onClick={pauseTime}
                             >
-                                Pause time
+                                Pause Time
                             </Button>
                             <Button className={classGetAns} onClick={getAns}>
                                 {getAnsValue}
@@ -48,7 +50,7 @@ const Helpers = ({ delete2, toggle, trueAnswer, isActive, score }) => {
                     </Row>
                 </Col>
                 <Col xs={2}>
-                    <span class="badge bg-success">score: {score}</span>
+                    <span className="badge bg-success">score: {score}</span>
                 </Col>
             </Row>
         </>
