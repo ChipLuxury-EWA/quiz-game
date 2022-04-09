@@ -68,7 +68,7 @@ const HomeScreen = () => {
             </p>
             <h6>Features:</h6>
             <ul>
-                <li>You can set the timer in the settings screen</li>
+                <li>You can set the timer in the settings screen.</li>
             </ul>
             <h5>ENJOY!</h5>
             <button
