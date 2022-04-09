@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const HomeScreen = () => {
-    const [cheat, setCheatb] = useState("If u wanna cheat cheat, don't click.");
+    const [cheat] = useState("If u wanna cheat cheat, don't click.");
     const [showCheat, setShowCheat] = useState(false);
 
     const toggle = () => {
@@ -42,7 +42,9 @@ const HomeScreen = () => {
                     You have 3 lifelines:{" "}
                     <ul>
                         <li>50/50 - delete 2 possible answers.</li>
-                        <li>Pause time - stop the timer until next question.</li>
+                        <li>
+                            Pause time - stop the timer until next question.
+                        </li>
                         <li>Get answer - get the right answer.</li>
                         <ul>
                             <li>
